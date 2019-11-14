@@ -31,10 +31,23 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data () {
+    return {
+      d: {}
+    }
+  },
+  created() {
+    axios({
+      url:'/demo/list'
+    }).then(res => {
+      window.console.log(res)
+    })
   }
 }
 </script>
