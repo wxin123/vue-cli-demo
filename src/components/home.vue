@@ -29,10 +29,10 @@
         },
         created() {
             axios({
-                url:'/demo/list'
+                url:'/demo/getDemo'
             }).then(res => {
                 window.console.log(res.data.data)
-                this.tableData = res.data.data.data
+                this.tableData = res.data.data
             })
         }
     }
