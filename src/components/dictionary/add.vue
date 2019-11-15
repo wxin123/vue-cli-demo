@@ -20,9 +20,11 @@
 
 <script>
     import bus from '@/utils/bus.js'
+    import interfaces from '@/utils/interface.js'
     import axios from 'axios'
     export default {
         name: "add",
+        props: ['optType'],
         data(){
             return {
                 form:{
@@ -33,8 +35,9 @@
         },
         methods:{
             handleAdd(){
+                let url = this.optType == 'edit' ? interfaces.dictionary.add:interfaces.dictionary.edit
                 // 新增字典
-                axios.post('',this.form).then( res => {
+                axios.post(url,this.form).then( res => {
                     bus.$emit('dictionaryShow',false)
                     window.console.log(res)
                 }).catch(error => {

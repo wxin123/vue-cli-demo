@@ -1,6 +1,6 @@
 <template>
     <div id="index">
-        <Add v-if="dictionaryShow"/>
+        <Add :optType="optType" v-if="dictionaryShow"/>
         <div class="box" v-loading="dictionaryShow"
              element-loading-text=""
              element-loading-spinner="none"
@@ -45,11 +45,13 @@
     import bus from '@/utils/bus.js'
     import axios from 'axios'
     import Add from "./add";
+    import interfaces from "@/utils/interface.js"
     export default {
         name: "index",
         components: {Add},
         data() {
             return {
+                optType: 'add',
                 formInline: {
                     keyword: ''
                 },
@@ -71,7 +73,7 @@
         methods: {
             getList (){
                 // 查询字典列表
-                axios.get('',{
+                axios.get(interfaces.dictionary.page,{
                     params: this.formInline
                 }).then(res => {
                     this.tableData = res.data.list
@@ -83,7 +85,11 @@
                 this.getList()
             },
             handleAdd(){
+                this.optType = 'add';
                 this.dictionaryShow = true
+            },
+            handleEdit(){
+                this.optType = 'edit';
             },
             handleSizeChange(){
 
