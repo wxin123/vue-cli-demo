@@ -23,13 +23,15 @@
                 </el-select>
             </el-col>
             <el-col :span="6">
-                <el-button type="primary" size="small">查询</el-button>
+                <el-button type="primary" size="small" @click="handleAdd">新增</el-button>
+                <el-button type="primary" size="small" @click="handleQuery">查询</el-button>
             </el-col>
         </el-row>
     </div>
 </template>
 
 <script>
+    import bus from '@/utils/bus.js'
     export default {
         name: "navBar",
         data() {
@@ -45,7 +47,12 @@
         created() {},
         mounted() {},
         methods: {
+            handleAdd(){
+                bus.$emit('showAddTask',true)
+            },
+            handleQuery(){
 
+            }
         }
     }
 </script>
