@@ -24,10 +24,11 @@
     import axios from 'axios'
     export default {
         name: "add",
-        props: ['optType'],
+        props: ['optType','id'],
         data(){
             return {
                 form:{
+                    id: '',
                     type:'',
                     code:''
                 }
@@ -36,6 +37,7 @@
         methods:{
             handleAdd(){
                 let url = this.optType == 'edit' ? interfaces.dictionary.add:interfaces.dictionary.edit
+                this.form.id = this.id
                 // 新增字典
                 axios.post(url,this.form).then( res => {
                     bus.$emit('dictionaryShow',false)
