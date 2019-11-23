@@ -1,14 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const home = () => import('../components/home.vue')
-const dictionary = () => import('../components/dictionary/index.vue')
 Vue.use(Router)
 const router = new Router({
     mode: 'hash',
     routes: [
-        {path: '/',name: 'home',component: home},
-        {path: '/dictionary',name: 'dictionary',component: dictionary},
+        {path: '/', name: 'home', component: () => import('../components/home.vue')},
+        {
+            path: '/dictionary', name: 'dictionary',component: () => import('../components/dictionary/index.vue'),
+            children: [
+                {path: 'type', name: 'type', component: () => import('../components/dictionary/type/index.vue')},
+                {path: 'data', name: 'data', component: () => import('../components/dictionary/data/index.vue')},
+            ]
+        },
     ]
 })
 export default router
