@@ -18,10 +18,8 @@
                     :data="tableData"
                     style="width: 100%">
                 <el-table-column prop="id" label="ID"></el-table-column>
-                <el-table-column prop="date" label="日期"></el-table-column>
-                <el-table-column prop="type" label="类型"></el-table-column>
-                <el-table-column prop="money" label="金额"></el-table-column>
-                <el-table-column prop="remark" label="备注"></el-table-column>
+                <el-table-column prop="typeDesc" label="名称"></el-table-column>
+                <el-table-column prop="code" label="编码"></el-table-column>
                 <el-table-column prop="operate" label="操作" width="240">
                     <template slot-scope="scope">
                         <el-button @click="handleIntoDetail(scope.row)" type="primary" size="mini">查看</el-button>
@@ -63,7 +61,7 @@
                 currPage: 1,
                 pageNo: 30,
                 count: 100,
-                tableData: [{}],
+                tableData: [],
                 dictionaryShow: false
             }
         },
@@ -74,14 +72,18 @@
             bus.$on('dictionaryShow', flag => {
                 this.dictionaryShow = flag
             })
+            bus.$on('dictionaryReload',()=> {
+                this.getList()
+            })
         },
         methods: {
             getList() {
                 // 查询字典列表
+                let params = Object.assign(this.formInline, {pageNo: 1,starRow:1,pageSize:100})
                 axios.get(interfaces.dictionaryType.PAGE, {
-                    params: this.formInline
+                    params: params
                 }).then(res => {
-                    this.tableData = res.data.list
+                    this.tableData = res.data.data.list
                 }).catch(error => {
                     window.console.log(error)
                 })
@@ -101,7 +103,19 @@
             },
             handleDel(row) {
                 window.console.log(row)
-                axios.post(interfaces.dictionaryType.DELETE,{id: row.id}).then(res => {
+                axios.post(interfaces.dictionaryType.DELETE,{typeId: row.id}).then(res => {
+                    if(res.data.code ==200) {
+                        this.$message({
+                            message: res.data.msg,
+                            type: 'success'
+                        });
+                        this.$emit('dictionaryReload')
+                    }else {
+                        this.$message({
+                            message: res.data.msg,
+                            type: 'error'
+                        });
+                    }
                     window.console.log(res)
                 }).catch(err => {
                     window.console.log(err)
