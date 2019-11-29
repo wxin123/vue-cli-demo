@@ -80,7 +80,7 @@
             getList() {
                 // 查询字典列表
                 let params = Object.assign(this.formInline, {pageNo: 1,starRow:1,pageSize:100})
-                axios.get(interfaces.dictionaryType.PAGE, {
+                axios.post(interfaces.dictionaryType.PAGE, {
                     params: params
                 }).then(res => {
                     this.tableData = res.data.data.list
@@ -103,7 +103,7 @@
             },
             handleDel(row) {
                 window.console.log(row)
-                axios.post(interfaces.dictionaryType.DELETE,{typeId: row.id}).then(res => {
+                axios.post(interfaces.dictionaryType.DELETE, {typeId: row.id}).then(res => {
                     if(res.data.code ==200) {
                         this.$message({
                             message: res.data.msg,
