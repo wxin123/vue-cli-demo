@@ -5,7 +5,8 @@ Vue.use(Router)
 const router = new Router({
     mode: 'hash',
     routes: [
-        {path: '/', name: 'home', component: () => import('../components/home.vue')},
+        {path: '/', name: 'index', component: () => import('../components/index.vue')},
+        {path: '/home', name: 'home', component: () => import('../components/home.vue')},
         {
             path: '/dictionary', name: 'dictionary',component: () => import('../components/dictionary/index.vue'),
             children: [
