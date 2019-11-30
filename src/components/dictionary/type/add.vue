@@ -26,7 +26,7 @@
     import axios from 'axios'
     export default {
         name: "add",
-        props: ['optType','id'],
+        props: ['optType','item'],
         data(){
             return {
                 form:{
@@ -36,10 +36,14 @@
                 }
             }
         },
+        mounted(){
+            if(this.optType == 'edit' ){
+                this.form = JSON.parse(JSON.stringify(this.item))
+            }
+        },
         methods:{
             handleAdd(){
                 let url = this.optType == 'add' ? interfaces.dictionaryType.ADD:interfaces.dictionaryType.EDIT
-                this.form.id = this.id
                 // 新增字典
                 axios.post(url,this.form).then( res => {
                     if(res.data.code == 200) {

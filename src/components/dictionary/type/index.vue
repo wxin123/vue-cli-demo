@@ -1,7 +1,7 @@
 <template>
     <div id="index">
         <h3>字典类别</h3>
-        <Add :optType="optType" :id="itemId"  v-if="dictionaryShow"/>
+        <Add :optType="optType" :item="item"  v-if="dictionaryShow"/>
         <div>
             <el-form :inline="true" :model="formInline" class="demo-form-inline">
                 <el-form-item label="关键字">
@@ -54,7 +54,7 @@
         data() {
             return {
                 optType: 'add',
-                itemId: '',
+                item: {},
                 formInline: {
                     keyword: ''
                 },
@@ -80,9 +80,7 @@
             getList() {
                 // 查询字典列表
                 let params = Object.assign(this.formInline, {pageNo: 1,starRow:1,pageSize:100})
-                axios.post(interfaces.dictionaryType.PAGE, {
-                    params: params
-                }).then(res => {
+                axios.post(interfaces.dictionaryType.PAGE, params).then(res => {
                     this.tableData = res.data.data.list
                 }).catch(error => {
                     window.console.log(error)
@@ -93,23 +91,23 @@
             },
             handleAdd() {
                 this.optType = 'add';
-                this.itemId = '';
+                this.item = {};
                 this.dictionaryShow = true
             },
             handleEdit(row) {
                 this.optType = 'edit';
-                this.itemId = row.id
+                this.item = row
                 this.dictionaryShow = true
             },
             handleDel(row) {
                 window.console.log(row)
-                axios.post(interfaces.dictionaryType.DELETE, {typeId: row.id}).then(res => {
+                axios.post(interfaces.dictionaryType.DELETE, {id: row.id}).then(res => {
                     if(res.data.code ==200) {
                         this.$message({
                             message: res.data.msg,
                             type: 'success'
                         });
-                        this.$emit('dictionaryReload')
+                        bus.$emit('dictionaryReload')
                     }else {
                         this.$message({
                             message: res.data.msg,
