@@ -70,7 +70,7 @@
         methods: {
             getList() {
                 // 查询字典列表
-                axios.get(interfaces.dictionary.page, {
+                axios.get(interfaces.dictionaryData.PAGE, {
                     params: this.formInline
                 }).then(res => {
                     this.tableData = res.data.list
