@@ -7,6 +7,12 @@ const router = new Router({
     routes: [
         {path: '/', name: 'index', component: () => import('../components/index.vue')},
         {path: '/home', name: 'home', component: () => import('../components/home.vue')},
+        {path: '/index', name: 'index', component: () => import('../pages/index.vue'),
+            children: [
+                {path: 'type', name: 'type', component: () => import('../components/dictionary/type/index.vue')},
+                {path: 'data', name: 'data', component: () => import('../components/dictionary/data/index.vue')},
+            ]
+        },
         {
             path: '/dictionary', name: 'dictionary',component: () => import('../components/dictionary/index.vue'),
             children: [
