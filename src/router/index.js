@@ -22,4 +22,12 @@ const router = new Router({
         },
     ]
 })
+// 全局路由守卫
+router.beforeEach((to, from, next) => {
+    window.console.log(to)
+    if (to.meta.title) {
+      document.title = to.meta.title || ''
+    }
+    next()
+  })
 export default router

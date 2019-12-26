@@ -20,11 +20,10 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["isFoldAside"])
+    ...mapState(["isFoldAside","headerTitle"])
   },
   methods: {
     goHome() {
-      localStorage.setItem("title", "首页");
       this.$router.push("/index");
     }
   }
