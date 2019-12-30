@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'app',
   data(){
@@ -22,8 +21,19 @@ export default {
 
 <style>
   body,html{margin: 0;padding: 0;background: #f9f9f9}
+
   #app {
     width: 1000px;
     margin: 0 auto;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 147, 153, 0.3);
+    border-radius: 3px;
   }
 </style>

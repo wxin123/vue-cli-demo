@@ -37,7 +37,7 @@ export default {
       menuList: [
         {
           icon: "el-icon-reading",
-          title: "字典",
+          title: "字典管理",
           index: "1",
           children: [
             {
@@ -51,6 +51,30 @@ export default {
               index: "1-2",
               path: "/data",
               name: "data"
+            }
+          ]
+        },{
+          icon: "el-icon-user",
+          title: "人员管理",
+          index: "2",
+          children: [
+            {
+              title: "人员",
+              index: "2-1",
+              path: "/user",
+              name: "user"
+            }
+          ]
+        },{
+          icon: "el-icon-setting",
+          title: "系统管理",
+          index: "3",
+          children: [
+            {
+              title: "初始化数据库",
+              index: "3-1",
+              path: "/initDB",
+              name: "initDB"
             }
           ]
         }/*,
