@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <i style="position: fixed;left: 0;top: 0;color: #000;font-weight: bold;z-index: 100000000000000" id="evn">{{evn}}</i>
+    <i style="position: fixed;right: 0;bottom: 0;color: #000;font-weight: bold;z-index: 100000000000000" id="evn">{{evn}}</i>
     <router-view />
   </div>
 </template>
