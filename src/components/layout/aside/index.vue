@@ -65,14 +65,40 @@ export default {
               name: "user"
             }
           ]
-        },{
-          icon: "el-icon-setting",
-          title: "系统管理",
+        },
+        {
+          icon: "el-icon-mic",
+          title: "娱乐管理",
           index: "3",
           children: [
             {
-              title: "初始化数据库",
+              title: "音乐",
               index: "3-1",
+              path: "/music",
+              name: "music"
+            }
+          ]
+        },
+        {
+          icon: "el-icon-pie-chart",
+          title: "图表管理",
+          index: "4",
+          children: [
+            {
+              title: "图表",
+              index: "4-1",
+              path: "/echart",
+              name: "echart"
+            }
+          ]
+        },{
+          icon: "el-icon-setting",
+          title: "系统管理",
+          index: "5",
+          children: [
+            {
+              title: "初始化数据库",
+              index: "5-1",
               path: "/initDB",
               name: "initDB"
             }

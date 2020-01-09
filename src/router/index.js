@@ -5,15 +5,17 @@ Vue.use(Router)
 const router = new Router({
     mode: 'hash',
     routes: [
-        {path: '/', name: 'index', component: () => import('../components/index.vue')},
+        // {path: '/', name: 'index', component: () => import('../components/index.vue')},
         {path: '/home', name: 'home', component: () => import('../components/home.vue')},
-        {path: '/index', name: 'index', component: () => import('../pages/index.vue'),
+        {path: '/', name: 'index', component: () => import('../pages/index.vue'),
             children: [
                 {path: 'home', name: 'home', component: () => import('../pages/home.vue')},
                 {path: 'type', name: 'type', component: () => import('../components/dictionary/type/index.vue')},
                 {path: 'data', name: 'data', component: () => import('../components/dictionary/data/index.vue')},
                 {path: 'initDB', name: 'initDB', component: () => import('../pages/system/initDB.vue')},
                 {path: 'user', name: 'user', component: () => import('../pages/user/user/index.vue')},
+                {path: 'echart', name: 'echart', component: () => import('../pages/echarts/index.vue')},
+                {path: 'music', name: 'music', component: () => import('../pages/entertainment/music/index.vue')},
             ]
         },
         {
