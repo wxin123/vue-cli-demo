@@ -80,7 +80,7 @@
             getList() {
                 // 查询字典列表
                 let params = Object.assign(this.formInline, {pageNo: 1,starRow:1,pageSize:100})
-                axios.post(interfaces.dictionaryType.PAGE, params).then(res => {
+                axios.post('http://39.99.199.70:8080/bootDemo/apis/dictionary/listType', params).then(res => {
                     this.tableData = res.data.data.list
                 }).catch(error => {
                     window.console.log(error)

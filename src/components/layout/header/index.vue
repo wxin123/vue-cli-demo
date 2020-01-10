@@ -10,21 +10,46 @@
         <i v-else class="el-icon-s-home"></i>
       </div>
     </div>
+    <div class="logout">
+
+      <el-dropdown class="setting" @command="handleCommand">
+        <span class="el-dropdown-link">
+          <i class="el-icon-s-tools"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item disabled>{{username}}</el-dropdown-item>
+          <el-dropdown-item divided command="logout">退出</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
+import Account from '@/utils/account'
 export default {
   data() {
-    return {};
+    return {
+      username: ''
+    };
+  },
+  created(){
+    this.username = localStorage.getItem('account')
   },
   computed: {
     ...mapState(["isFoldAside","headerTitle"])
   },
   methods: {
     goHome() {
-      this.$router.push("/index/home");
+      this.$router.push("/");
+    },
+    handleCommand(e){
+      if(e === 'logout') {
+        Account.clearAccountInfo()
+        this.$router.push('/login')
+      }
     }
   }
 };
@@ -72,12 +97,22 @@ export default {
       padding: 0 10px;
       span {
         font-size: 18px;
-        font-weight: blod;
+        font-weight: bold;
       }
     }
   }
   .menu.isFold {
     left: 50px;
+  }
+  .logout{
+    position: absolute;
+    right: 0;
+    height: 50px;
+    line-height: 50px;
+    padding-right: 12px;
+    .setting{
+      .el-icon-s-tools{color: #fff;font-size: 18px}
+    }
   }
 }
 </style>

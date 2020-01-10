@@ -1,0 +1,31 @@
+2020/01/10 10:16:24 [error] 30199#0: *1 open() "/usr/local/nginx/html/favicon.ico" failed (2: No such file or directory), client: 103.208.12.101, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "117.51.138.90", referrer: "http://117.51.138.90/"
+2020/01/10 10:21:32 [notice] 31858#0: signal process started
+2020/01/10 10:23:34 [notice] 32512#0: signal process started
+2020/01/10 10:35:05 [notice] 4145#0: signal process started
+2020/01/10 10:40:42 [notice] 5901#0: signal process started
+2020/01/10 10:48:24 [alert] 30189#0: worker process 5902 exited on signal 9
+2020/01/10 10:48:29 [alert] 30189#0: worker process 5903 exited on signal 9
+2020/01/10 10:48:31 [alert] 30189#0: worker process 5904 exited on signal 9
+2020/01/10 10:48:33 [alert] 30189#0: worker process 5905 exited on signal 9
+2020/01/10 10:48:35 [alert] 30189#0: worker process 5906 exited on signal 9
+2020/01/10 10:48:39 [alert] 30189#0: worker process 5907 exited on signal 9
+2020/01/10 10:48:41 [alert] 30189#0: worker process 5908 exited on signal 9
+2020/01/10 10:48:43 [alert] 30189#0: worker process 5909 exited on signal 9
+2020/01/10 10:48:48 [alert] 30189#0: worker process 5910 exited on signal 9
+2020/01/10 10:48:51 [alert] 30189#0: worker process 5911 exited on signal 9
+2020/01/10 10:49:11 [emerg] 8611#0: bind() to 0.0.0.0:8900 failed (98: Address already in use)
+2020/01/10 10:49:11 [emerg] 8611#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2020/01/10 10:49:11 [emerg] 8611#0: bind() to 0.0.0.0:8900 failed (98: Address already in use)
+2020/01/10 10:49:11 [emerg] 8611#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2020/01/10 10:49:11 [emerg] 8611#0: bind() to 0.0.0.0:8900 failed (98: Address already in use)
+2020/01/10 10:49:11 [emerg] 8611#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2020/01/10 10:49:11 [emerg] 8611#0: bind() to 0.0.0.0:8900 failed (98: Address already in use)
+2020/01/10 10:49:11 [emerg] 8611#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2020/01/10 10:49:11 [emerg] 8611#0: bind() to 0.0.0.0:8900 failed (98: Address already in use)
+2020/01/10 10:49:11 [emerg] 8611#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2020/01/10 10:49:11 [emerg] 8611#0: still could not bind()
+2020/01/10 10:49:33 [error] 8406#0: *17 open() "/usr/local/nginx/html/favicon.ico" failed (2: No such file or directory), client: 103.208.12.101, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "117.51.138.90", referrer: "http://117.51.138.90/"
+2020/01/10 10:50:05 [notice] 8909#0: signal process started
+2020/01/10 10:50:05 [alert] 8909#0: kill(30189, 1) failed (3: No such process)
+2020/01/10 10:55:15 [notice] 10542#0: signal process started
+2020/01/10 11:10:18 [notice] 15602#0: signal process started

@@ -7,6 +7,7 @@ const router = new Router({
     routes: [
         // {path: '/', name: 'index', component: () => import('../components/index.vue')},
         {path: '/home', name: 'home', component: () => import('../components/home.vue')},
+        {path: '/login', name: 'login', component: () => import('../pages/login.vue')},
         {path: '/', name: 'index', component: () => import('../pages/index.vue'),
             children: [
                 {path: 'home', name: 'home', component: () => import('../pages/home.vue')},
@@ -30,9 +31,18 @@ const router = new Router({
 // 全局路由守卫
 router.beforeEach((to, from, next) => {
     window.console.log(to)
-    if (to.meta.title) {
-      document.title = to.meta.title || ''
+    if(to.name == 'login'){
+        next()
+    } else {
+        if ( !localStorage.getItem("isLogin")) {
+            next({
+                path: '/login'
+            })
+            return
+        } else {
+            document.title = to.meta.title || ''
+            next()
+        }
     }
-    next()
   })
 export default router
