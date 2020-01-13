@@ -43,6 +43,7 @@
                 // 新增字典
                 axios.post(url,this.form).then( res => {
                     bus.$emit('dictionaryShow',false)
+                    console.log(res)
                     window.console.log(res)
                 }).catch(error => {
                     window.console.log(error)
