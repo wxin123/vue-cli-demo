@@ -1,9 +1,9 @@
 module.exports = {
     root: true,
-    evn: {
+    env: {
         node: true
     },
     rules: {
-        "no-console": true
+        "no-console": "off"
     }
 }

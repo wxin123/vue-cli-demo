@@ -19,7 +19,6 @@
 
 <script>
     import Account from '@/utils/account'
-    import axios from 'axios'
     export default {
         name: "login",
         data(){
@@ -39,7 +38,7 @@
             }
         },
         created(){
-            axios.post('/dataType').then(res=> {
+            this.$http.get('/good/getGoods').then(res=> {
                 window.console.log(res)
             }).catch(err => {
                 window.console.log(err)
