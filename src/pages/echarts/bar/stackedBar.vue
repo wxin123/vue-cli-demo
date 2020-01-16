@@ -1,6 +1,6 @@
 <template>
     <div id="stackedBar">
-        <div class="chartTitle">分业态客户年龄分布</div>
+        <div class="chartTitle">表格一</div>
         <div class="chartTab">
             <span @click="changeTab(0)" :class="{active: tabIndex==0}">比例</span>
             <span @click="changeTab(1)" :class="{active: tabIndex==1}">人数</span>
@@ -17,14 +17,14 @@
                 myChart: null,
                 tabIndex: 0,
                 list: [
-                    {barColor: '#5FE1F5', label: '20岁以下', icon: '', data: [320, 302, 301, 334]},
-                    {barColor: '#05B9AF', label: '20-25岁', icon: '', data: [120, 132, 101, 134]},
-                    {barColor: '#4187F5', label: '25-35岁', icon: '', data: [220, 182, 191, 234]},
-                    {barColor: '#3CC49B', label: '35-45岁', icon: '', data: [150, 212, 201, 154]},
-                    {barColor: '#009B6E', label: '45-55岁', icon: '', data: [820, 832, 901, 934]},
-                    {barColor: '#007391', label: '55岁以上', icon: '', data: [220, 182, 191, 234]}
+                    {barColor: '#5FE1F5', label: '20', icon: '', data: [320, 302, 301, 334]},
+                    {barColor: '#05B9AF', label: '20-25', icon: '', data: [120, 132, 101, 134]},
+                    {barColor: '#4187F5', label: '25-35', icon: '', data: [220, 182, 191, 234]},
+                    {barColor: '#3CC49B', label: '35-45', icon: '', data: [150, 212, 201, 154]},
+                    {barColor: '#009B6E', label: '45-55', icon: '', data: [820, 832, 901, 934]},
+                    {barColor: '#007391', label: '55', icon: '', data: [220, 182, 191, 234]}
                 ],
-                labelList: ['商住','小高','别墅','洋房']
+                labelList: ['dddd','aaa','ccc','bbb']
             }
         },
         mounted() {

@@ -1,5 +1,5 @@
 <template>
-    <div id="echarts">
+    <div id="entertainment">
         <router-view/>
     </div>
 </template>

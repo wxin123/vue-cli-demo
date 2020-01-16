@@ -43,13 +43,13 @@ export default {
             {
               title: "类别",
               index: "1-1",
-              path: "/type",
+              path: "/dictionary/type",
               name: "type"
             },
             {
               title: "详情",
               index: "1-2",
-              path: "/data",
+              path: "/dictionary/data",
               name: "data"
             }
           ]
@@ -62,7 +62,7 @@ export default {
             {
               title: "人员",
               index: "2-1",
-              path: "/user",
+              path: "/user/user",
               name: "user"
             }
           ]
@@ -75,7 +75,7 @@ export default {
             {
               title: "音乐",
               index: "3-1",
-              path: "/music",
+              path: "/entertainment/music",
               name: "music"
             }
           ]
@@ -86,10 +86,10 @@ export default {
           index: "4",
           children: [
             {
-              title: "图表",
+              title: "柱状图",
               index: "4-1",
-              path: "/echart",
-              name: "echart"
+              path: "/echarts/bar",
+              name: "bar"
             }
           ]
         },
@@ -101,7 +101,7 @@ export default {
             {
               title: "计划",
               index: "5-1",
-              path: "/plan",
+              path: "/task/plan",
               name: "plan"
             }
           ]
@@ -114,30 +114,11 @@ export default {
             {
               title: "初始化数据库",
               index: "10-1",
-              path: "/initDB",
+              path: "/system/initDB",
               name: "initDB"
             }
           ]
-        }/*,
-        {
-          icon: "el-icon-pie-chart",
-          title: "图表",
-          index: "1",
-          children: [
-            {
-              title: "饼图",
-              index: "1-1",
-              path: "/type",
-              name: "type"
-            },
-            {
-              title: "柱状图",
-              index: "1-2",
-              path: "/data",
-              name: "data"
-            }
-          ]
-        }*/
+        }
       ]
     };
   },

@@ -2,7 +2,9 @@ import axios from 'axios'
 // 配置全局地址
 const instance = axios.create({
     baseURL: '/apis',
-    // headers: {}
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    }
 })
 export const setHeader = (key, val) => {
     instance.defaults.headers.common[key] = val
@@ -49,10 +51,18 @@ instance.interceptors.response.use(response => {
 
 export default {
     get (url, options = {}) {
-        window.console.log(instance.baseURL)
         return instance.get(url, { params: options }).catch(handleError)
     },
     post (url, data = {}, config = {}) {
+        return instance({
+            method: 'POST',
+            url: url,
+            headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            // data: data,
+            params: data,
+        }, config).catch(handleError)
+    },
+    post2 (url, data = {}, config = {}) {
         return instance.post(url, data, config).catch(handleError)
     },
     put (url, data = {}, config = {}) {

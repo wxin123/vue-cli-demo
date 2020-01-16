@@ -1,5 +1,5 @@
 <template>
-    <div id="echarts">
+    <div id="system">
         <router-view/>
     </div>
 </template>

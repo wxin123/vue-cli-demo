@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import db from '../../api/io2'
+    import db from '../../../api/io2'
     export default {
         name: "initDB",
         methods: {

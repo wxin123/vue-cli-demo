@@ -1,6 +1,6 @@
 <template>
     <div id="stackedBar">
-        <div class="chartTitle">分业态客户年龄分布</div>
+        <div class="chartTitle">表格二</div>
         <div class="chartTab">
             <span @click="changeTab(0)" :class="{active: tabIndex==0}">比例</span>
             <span @click="changeTab(1)" :class="{active: tabIndex==1}">人数</span>
