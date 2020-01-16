@@ -2,11 +2,7 @@ import axios from 'axios'
 // 配置全局地址
 const instance = axios.create({
     baseURL: '/apis',
-   /* headers: {
-        'platform': 'pc',
-        'version': 'v1',
-        'X-Requested-With': 'XMLHttpRequest'
-    }*/
+    // headers: {}
 })
 export const setHeader = (key, val) => {
     instance.defaults.headers.common[key] = val

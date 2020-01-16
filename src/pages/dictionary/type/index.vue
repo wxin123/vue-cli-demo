@@ -46,8 +46,7 @@
     import bus from '@/utils/bus.js'
     import axios from 'axios'
     import Add from "./add";
-    import interfaces from "@/utils/interface.js"
-
+    import {DICTIONARY_TYPE} from "@/utils/apis.js"
     export default {
         name: "index",
         components: {Add},
@@ -80,7 +79,7 @@
             getList() {
                 // 查询字典列表
                 let params = Object.assign(this.formInline, {pageNo: 1,starRow:1,pageSize:100})
-                axios.post('http://39.99.199.70:8080/bootDemo/apis/dictionary/listType', params).then(res => {
+                this.$http.post(DICTIONARY_TYPE.LIST, params).then(res => {
                     this.tableData = res.data.data.list
                 }).catch(error => {
                     window.console.log(error)
@@ -101,7 +100,7 @@
             },
             handleDel(row) {
                 window.console.log(row)
-                axios.post(interfaces.dictionaryType.DELETE, {id: row.id}).then(res => {
+                axios.post(DICTIONARY_TYPE.DELETE, {id: row.id}).then(res => {
                     if(res.data.code ==200) {
                         this.$message({
                             message: res.data.msg,

@@ -21,9 +21,8 @@
 </template>
 
 <script>
-    import bus from '@/utils/bus.js'
-    import interfaces from '@/utils/interface.js'
-    import axios from 'axios'
+    import bus from '@/utils/bus.js';
+    import {DICTIONARY_DATA} from '@/utils/apis.js'
     export default {
         name: "add",
         props: ['optType','id'],
@@ -38,12 +37,11 @@
         },
         methods:{
             handleAdd(){
-                let url = this.optType == 'edit' ? interfaces.dictionary.add:interfaces.dictionary.edit
+                let url = this.optType == 'edit' ? DICTIONARY_DATA.INSERT:DICTIONARY_DATA.UPDATE
                 this.form.id = this.id
                 // 新增字典
-                axios.post(url,this.form).then( res => {
+                this.$http.post(url,this.form).then( res => {
                     bus.$emit('dictionaryShow',false)
-                    console.log(res)
                     window.console.log(res)
                 }).catch(error => {
                     window.console.log(error)

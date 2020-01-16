@@ -53,7 +53,8 @@ export default {
               name: "data"
             }
           ]
-        },{
+        },
+        {
           icon: "el-icon-user",
           title: "人员管理",
           index: "2",
@@ -91,14 +92,28 @@ export default {
               name: "echart"
             }
           ]
-        },{
-          icon: "el-icon-setting",
-          title: "系统管理",
+        },
+        {
+          icon: "el-icon-s-order",
+          title: "任务管理",
           index: "5",
           children: [
             {
-              title: "初始化数据库",
+              title: "计划",
               index: "5-1",
+              path: "/plan",
+              name: "plan"
+            }
+          ]
+        },
+        {
+          icon: "el-icon-setting",
+          title: "系统管理",
+          index: "10",
+          children: [
+            {
+              title: "初始化数据库",
+              index: "10-1",
               path: "/initDB",
               name: "initDB"
             }

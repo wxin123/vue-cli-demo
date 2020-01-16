@@ -22,8 +22,7 @@
 
 <script>
     import bus from '@/utils/bus.js'
-    import interfaces from '@/utils/interface.js'
-    import axios from 'axios'
+    import { DICTIONARY_TYPE } from '@/utils/apis.js'
     export default {
         name: "add",
         props: ['optType','item'],
@@ -43,9 +42,9 @@
         },
         methods:{
             handleAdd(){
-                let url = this.optType == 'add' ? interfaces.dictionaryType.ADD:interfaces.dictionaryType.EDIT
+                let url = this.optType == 'add' ? DICTIONARY_TYPE.INSERT :DICTIONARY_TYPE.UPDATE
                 // 新增字典
-                axios.post(url,this.form).then( res => {
+                this.$http.post(url,this.form).then( res => {
                     if(res.data.code == 200) {
                         this.$message({
                             message: res.data.msg,

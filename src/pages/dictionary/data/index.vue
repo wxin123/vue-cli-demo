@@ -39,10 +39,8 @@
 
 <script>
     import bus from '@/utils/bus.js'
-    import axios from 'axios'
     import Add from "./add";
-    import interfaces from "@/utils/interface.js"
-
+    import { DICTIONARY_DATA } from '@/utils/apis.js'
     export default {
         name: "index",
         components: {Add},
@@ -70,7 +68,7 @@
         methods: {
             getList() {
                 // 查询字典列表
-                axios.get(interfaces.dictionaryData.PAGE, {
+                this.$http.get(DICTIONARY_DATA.LIST, {
                     params: this.formInline
                 }).then(res => {
                     this.tableData = res.data.list
