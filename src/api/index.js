@@ -1,9 +1,9 @@
 import axios from 'axios'
 // 配置全局地址
 const instance = axios.create({
-    baseURL: '/apis',
+    baseURL: '/',
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        // 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
     }
 })
 export const setHeader = (key, val) => {
@@ -16,7 +16,7 @@ const handleError = (err) => {
 
 // 添加请求拦截
 instance.interceptors.request.use(config => {
-    const token = localStorage.token
+    const token = localStorage['_token']
     if (token) {
         config.headers.token = token
     }
@@ -54,15 +54,6 @@ export default {
         return instance.get(url, { params: options }).catch(handleError)
     },
     post (url, data = {}, config = {}) {
-        return instance({
-            method: 'POST',
-            url: url,
-            headers: { 'content-type': 'application/x-www-form-urlencoded' },
-            // data: data,
-            params: data,
-        }, config).catch(handleError)
-    },
-    post2 (url, data = {}, config = {}) {
         return instance.post(url, data, config).catch(handleError)
     },
     put (url, data = {}, config = {}) {
@@ -72,5 +63,8 @@ export default {
     delete (url, options = {}) {
         return instance.delete(url, options)
             .catch(handleError)
+    },
+    $( options = {}){
+        return instance(options).catch(handleError)
     }
 }

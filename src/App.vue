@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <i style="position: fixed;right: 0;bottom: 0;color: #000;font-weight: bold;z-index: 100000000000000" id="evn">{{evn}}</i>
+    <i style="position: fixed;right: 15px;bottom: 10px;color: #000;font-weight: bold;z-index: 100000000000000" id="evn">{{evn}}</i>
     <router-view />
   </div>
 </template>
@@ -10,11 +10,11 @@ export default {
   name: 'app',
   data(){
     return {
-      evn: 'dev'
+      evn: 'development'
     }
   },
   created() {
-    this.evn = process.env.VUE_APP_ENV
+    this.evn = process.env.NODE_ENV
   }
 }
 </script>

@@ -5,11 +5,10 @@ Vue.use(Router)
 const router = new Router({
     mode: 'hash',
     routes: [
-        {path: '/home', name: 'home', component: () => import('../components/home.vue')},
         {path: '/login', name: 'login', component: () => import('../pages/login.vue')},
-        {path: '/', name: 'index', component: () => import('../pages/index.vue'),
+        {path: '/', name: 'index', component: () => import('../pages/index.vue'), redirect: '/home',
             children: [
-                {path: 'home', name: 'home', component: () => import('../pages/home.vue')},
+                {path: 'home', name: 'home', component: () => import('../pages/home/index.vue')},
                 {path: 'dictionary', name: 'dictionary', component: () => import('../pages/dictionary/index.vue'),
                     children: [
                         {path: 'type', name: 'type', component: () => import('../pages/dictionary/type/index.vue')},
@@ -28,12 +27,15 @@ const router = new Router({
                 },
                 {path: 'system', name: 'system', component: () => import('../pages/system/index.vue'),
                     children: [
-                        {path: 'initDB', name: 'initDB', component: () => import('../pages/system/init/index.vue')}
+                        // {path: 'initDB', name: 'initDB', component: () => import('../pages/system/init/index.vue')},
+                        {path: 'user', name: 'user', component: () => import('../pages/user/user/index.vue')},
+                        {path: 'privilege', name: 'privilege', component: () => import('../pages/system/privilege/index.vue')},
                     ]
                 },
                 {path: 'task', name: 'task', component: () => import('../pages/task/index.vue'),
                     children: [
                         {path: 'plan', name: 'plan', component: () => import('../pages/task/plan/index.vue')},
+                        {path: 'goods', name: 'goods', component: () => import('../pages/task/goods/index.vue')},
                     ]
                 },
                 {path: 'user', name: 'user', component: () => import('../pages/system/index.vue'),

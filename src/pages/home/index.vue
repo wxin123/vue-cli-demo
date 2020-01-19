@@ -40,14 +40,7 @@
                 tableData: [{id:1},{id:2}]
             }
         },
-        created() {
-            axios({
-                url:'/demo/getDemo'
-            }).then(res => {
-                window.console.log(res.data.data)
-                // this.tableData = res.data.data
-            })
-        },
+        created() {},
         mounted() {
             bus.$on('showAddTask',flag =>{
                 this.showAddTask = flag

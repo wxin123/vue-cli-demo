@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { PLAN } from '@/utils/apis.js';
+import {GOODS} from '@/utils/apis.js';
 export default {
     name: "index",
     data() {
@@ -64,7 +64,7 @@ export default {
     },
     methods: {
         getList() {
-            this.$http.post(PLAN.LIST, {name: this.name}).then((res) => {
+            this.$http.post(GOODS.LIST, {name: this.name}).then((res) => {
                 this.list = res.data
             })
         },
@@ -72,13 +72,13 @@ export default {
             this.getList()
         },
         add() {
-            this.$http.post(PLAN.INSERT).then(() => {
+            this.$http.post(GOODS.INSERT).then(() => {
                 this.getList()
             }).catch(() => {
             })
         },
         save(row) {
-            this.$http.post(PLAN.UPDATE, {"id":4,"name":"徒步鞋"}).then(() => {
+            this.$http.post(GOODS.UPDATE, row).then(() => {
                 this.getList();
                 this.$message.success('已保存')
             }).catch(() => {
@@ -86,7 +86,7 @@ export default {
         },
         del(row) {
             this.$confirm('删除后无法恢复，是否删除？', '提示', {type: 'warning'}).then(() => {
-                this.$http.post(PLAN.DELETE, {id: row.id}).then(() => {
+                this.$http.post(GOODS.DELETE, {id: row.id}).then(() => {
                     this.getList();
                     this.$message.success('已删除')
                 }).catch(() => {

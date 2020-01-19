@@ -3,6 +3,7 @@
     <el-menu
       :collapse="isFoldAside"
       background-color="#545c64"
+      :default-active="defaultActive"
       style="width: 182px"
       @open="handleOpen"
       @close="handleClose"
@@ -34,6 +35,7 @@ export default {
   components: {},
   data() {
     return {
+      defaultActive: '',
       menuList: [
         {
           icon: "el-icon-reading",
@@ -51,19 +53,6 @@ export default {
               index: "1-2",
               path: "/dictionary/data",
               name: "data"
-            }
-          ]
-        },
-        {
-          icon: "el-icon-user",
-          title: "人员管理",
-          index: "2",
-          children: [
-            {
-              title: "人员",
-              index: "2-1",
-              path: "/user/user",
-              name: "user"
             }
           ]
         },
@@ -103,6 +92,12 @@ export default {
               index: "5-1",
               path: "/task/plan",
               name: "plan"
+            },
+            {
+              title: "物品",
+              index: "5-2",
+              path: "/task/goods",
+              name: "goods"
             }
           ]
         },
@@ -111,11 +106,23 @@ export default {
           title: "系统管理",
           index: "10",
           children: [
-            {
+            /*{
               title: "初始化数据库",
               index: "10-1",
               path: "/system/initDB",
               name: "initDB"
+            },*/
+            {
+              title: "用户",
+              index: "10-1",
+              path: "/system/user",
+              name: "user"
+            },
+            {
+              title: "权限管理",
+              index: "10-2",
+              path: "/system/privilege",
+              name: "privilege"
             }
           ]
         }
@@ -125,7 +132,9 @@ export default {
   computed: {
     ...mapState(["isFoldAside"])
   },
-  created() {},
+  created() {
+      this.defaultActive = localStorage.getItem('asideIndex') || ''
+  },
   watch: {
     isFoldActive(val) {
       window.console.log(val);
@@ -140,8 +149,8 @@ export default {
       window.console.log(key, keyPath);
     },
     goInto(item) {
-      window.console.log(this.$router)
       localStorage.setItem("title",item.title)
+      localStorage.setItem('asideIndex', item.index)
       this.$router.push({
           path: item.path,
           name: item.name
