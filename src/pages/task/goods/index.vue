@@ -104,9 +104,4 @@ export default {
     .form{
         margin: 10px;
     }
-    .no-padding-table.el-table{
-        td{padding: 0!important;}
-        .cell{padding: 0!important;}
-        .el-table--border td:first-child .cell{padding: 0!important;}
-    }
 </style>

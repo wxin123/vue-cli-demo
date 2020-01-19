@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
   body,html{margin: 0;padding: 0;background: #f9f9f9}
 
   #app {
@@ -35,5 +35,10 @@ export default {
   ::-webkit-scrollbar-thumb {
     background-color: rgba(144, 147, 153, 0.3);
     border-radius: 3px;
+  }
+  .no-padding-table.el-table{
+    td{padding: 0!important;}
+    .cell{padding: 0!important;}
+    .el-table--border td:first-child .cell{padding: 0!important;}
   }
 </style>

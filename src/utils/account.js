@@ -3,6 +3,8 @@ const setAccountInfo = (param) => {
     localStorage.setItem('isLogin', 1)
     localStorage.setItem('_token', param['_token'])
     localStorage.setItem('session_id', param['session_id'])
+    localStorage.removeItem('asideIndex')
+    localStorage.removeItem('title')
 }
 const clearAccountInfo = () => {
     localStorage.removeItem('account')

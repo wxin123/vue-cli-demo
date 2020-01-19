@@ -29,12 +29,12 @@
             </el-form>
         </div>
         <div>
-            <el-table :border="true" :data="tableData" style="width: 100%">
-                <el-table-column prop="id" label="ID"></el-table-column>
-                <el-table-column prop="name" label="日期"></el-table-column>
-                <el-table-column prop="flag" label="标识符"></el-table-column>
+            <el-table :border="true" :data="tableData" style="width: 100%" >
+                <el-table-column prop="id" label="ID" width="100"></el-table-column>
+                <el-table-column prop="name" label="名称" width="150"></el-table-column>
+                <el-table-column prop="flag" label="标识符" width="200"></el-table-column>
                 <el-table-column prop="desc" label="描述"></el-table-column>
-                <el-table-column prop="operate" label="操作">
+                <el-table-column prop="operate" label="操作" width="150">
                     <template slot-scope="scope">
                         <el-button type="primary" size="mini" @click="handleEdit(scope.row)">编辑</el-button>
                         <el-button type="danger" size="mini" @click="handleDelete(scope.row)">删除</el-button>
