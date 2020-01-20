@@ -26,14 +26,20 @@ const PLAN = {
   ONE: '/apis/target/getPlanById'
 }
 const LOGIN = {
-  LOGIN: '/node/login',
-  REGISTER: '/node/register'
+  LOGIN: `${process.env.VUE_APP_API}/login`,
+  REGISTER: `${process.env.VUE_APP_API}/register`
 }
 const PRIVILEGE = {
-  LIST: '/node/privilege',
-  UPDATE: '/node/privilege/update',
-  DELETE: '/node/privilege/delete',
-  INSERT: '/node/privilege/insert'
+  LIST: `${process.env.VUE_APP_API}/privilege`,
+  UPDATE: `${process.env.VUE_APP_API}/privilege/update`,
+  DELETE: `${process.env.VUE_APP_API}/privilege/delete`,
+  INSERT: `${process.env.VUE_APP_API}/privilege/insert`
+}
+const USER = {
+  LIST: `${process.env.VUE_APP_API}/privilege`,
+  UPDATE: `${process.env.VUE_APP_API}/privilege`,
+  DELETE: `${process.env.VUE_APP_API}/privilege`,
+  INSERT: `${process.env.VUE_APP_API}/privilege`
 }
 export {
   DICTIONARY_TYPE,
@@ -41,5 +47,6 @@ export {
   GOODS,
   LOGIN,
   PRIVILEGE,
-  PLAN
+  PLAN,
+  USER
 }

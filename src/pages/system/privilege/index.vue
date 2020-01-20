@@ -18,7 +18,7 @@
             </el-form>
         </el-dialog>
         <div>
-            <el-form :inline="true" :model="formInline" class="demo-form-inline">
+            <el-form :inline="true" :model="formInline" class="form">
                 <el-form-item label="关键字">
                     <el-input v-model="formInline.keyword" size="small" placeholder="类别/编码"></el-input>
                 </el-form-item>
@@ -66,7 +66,8 @@
         dialogVisible: false,
         optType: 'add',
         formInline: {
-          keyword: '',
+          name: '',
+          pageSize: 1
         },
         form: {
           id: '',
@@ -88,9 +89,8 @@
     methods: {
       getList() {
         // 查询字典列表
-        this.$http.get(PRIVILEGE.LIST, {
-          params: this.formInline
-        }).then(res => {
+        // this.$http.post('http://www.wxin.wang/nodes/privilege', this.formInline).then(res => {
+        this.$http.post(PRIVILEGE.LIST, this.formInline).then(res => {
           this.tableData = res.data.data.data
           this.count = res.data.data.count
         }).catch(error => {

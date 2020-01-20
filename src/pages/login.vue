@@ -2,20 +2,37 @@
     <div class="login">
         <div class="loginBox">
             <h3>{{type == 1 ? '登录': '注册'}}</h3>
-            <el-form label-width="60px" ref="form" :rules="type ==1 ? formRules: formRules2" :model="form">
+            <el-form v-if="type==1" label-width="80px" ref="loginForm" :rules="loginFormRule" :model="loginForm">
                 <el-form-item label="账号" prop="username">
-                    <el-input type="text" v-model="form.username"></el-input>
+                    <el-input type="text" v-model="loginForm.username"></el-input>
                 </el-form-item>
                 <el-form-item label="密码" prop="password">
-                    <el-input type="password" v-model="form.password"></el-input>
-                </el-form-item>
-                <el-form-item label="手机" prop="mobile" v-if="type == 2">
-                    <el-input type="text" v-model="form.mobile"></el-input>
+                    <el-input type="password" v-model="loginForm.password"></el-input>
                 </el-form-item>
                 <el-form-item label="">
-                    <el-button v-if="type ==1" style="width: 100%" type="primary" @click="login">登录</el-button>
-                    <el-button v-if="type ==2" style="width: 100%" type="primary" @click="register">注册</el-button>
+                    <el-button style="width: 100%" type="primary" @click="login">登录</el-button>
                     <span @click="goRegister">还没账号？去注册</span>
+                </el-form-item>
+            </el-form>
+            <el-form v-if="type==2" label-width="80px" ref="regForm" :rules="regFormRule" :model="regForm">
+                <el-form-item label="昵称" prop="nickname">
+                    <el-input type="text" v-model="regForm.username"></el-input>
+                </el-form-item>
+                <el-form-item label="账号" prop="username">
+                    <el-input type="text" v-model="regForm.username"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="password">
+                    <el-input type="password" v-model="regForm.password"></el-input>
+                </el-form-item>
+                <el-form-item label="确认密码" prop="password">
+                    <el-input type="password" v-model="regForm.confirmPass"></el-input>
+                </el-form-item>
+                <el-form-item label="手机" prop="mobile">
+                    <el-input type="text" v-model="regForm.mobile"></el-input>
+                </el-form-item>
+                <el-form-item label="">
+                    <el-button style="width: 100%" type="primary" @click="register">注册</el-button>
+                    <span @click="goLogin">已有账号？去登录</span>
                 </el-form-item>
             </el-form>
         </div>
@@ -30,12 +47,18 @@
     data() {
       return {
         type: 1,
-        form: {
-          username: 'admin',
-          password: '123456',
-          mobile: '12'
+        loginForm: {
+          username: '',
+          password: ''
         },
-        formRules: {
+        regForm: {
+          nickname: '',
+          username: '',
+          password: '',
+          confirmPass: '',
+          mobile: ''
+        },
+        loginFormRule: {
           username: [
             {required: true, message: '请输入账号', trigger: 'blur'}
           ],
@@ -43,12 +66,18 @@
             {required: true, message: '请输入密码', trigger: 'blur'}
           ],
         },
-        formRules2: {
+        regFormRule: {
+          nickname: [
+            {required: true, message: '请输入昵称', trigger: 'blur'}
+          ],
           username: [
             {required: true, message: '请输入账号', trigger: 'blur'}
           ],
           password: [
             {required: true, message: '请输入密码', trigger: 'blur'}
+          ],
+          confirmPass: [
+            {required: true, message: '请确认密码', trigger: 'blur'}
           ],
           mobile: [
             {required: true, message: '请输入手机号', trigger: 'blur'}
@@ -66,7 +95,7 @@
         this.type = 1
       },
       login() {
-        this.$refs['form'].validate((valid) => {
+        this.$refs['loginForm'].validate((valid) => {
           if (valid) {
             this.$http.post(LOGIN.LOGIN, this.form).then((res) => {
               window.console.log(res.data)
@@ -83,7 +112,7 @@
         });
       },
       register() {
-        this.$refs['form'].validate((valid) => {
+        this.$refs['regForm'].validate((valid) => {
           if (valid) {
             this.$http.post(LOGIN.REGISTER, this.form).then((res) => {
               if(res.data.status == 200) {
@@ -119,7 +148,6 @@
                 text-align: center;
                 font-size: 20px
             }
-
             width: 360px;
             background: #fff;
             padding: 15px;

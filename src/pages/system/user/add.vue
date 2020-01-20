@@ -4,10 +4,10 @@
             <el-form-item label="姓名" >
                 <el-input v-model="form.name" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item label="性别" >
+            <el-form-item label="角色" >
                 <el-select v-model="form.sex" placeholder="选择性别" style="width: 100%">
-                    <el-option label="男" :value="1">男</el-option>
-                    <el-option label="女" :value="2">女</el-option>
+                    <el-option label="管理员" :value="1">用户</el-option>
+                    <el-option label="用户" :value="2">管理员</el-option>
                 </el-select>
             </el-form-item>
             <el-form-item label="职位">

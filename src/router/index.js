@@ -28,7 +28,7 @@ const router = new Router({
                 {path: 'system', name: 'system', component: () => import('../pages/system/index.vue'),
                     children: [
                         // {path: 'initDB', name: 'initDB', component: () => import('../pages/system/init/index.vue')},
-                        {path: 'user', name: 'user', component: () => import('../pages/user/user/index.vue')},
+                        {path: 'user', name: 'user', component: () => import('../pages/system/user/index.vue')},
                         {path: 'privilege', name: 'privilege', component: () => import('../pages/system/privilege/index.vue')},
                     ]
                 },
@@ -40,7 +40,7 @@ const router = new Router({
                 },
                 {path: 'user', name: 'user', component: () => import('../pages/system/index.vue'),
                     children: [
-                        {path: 'user', name: 'user', component: () => import('../pages/user/user/index.vue')}
+                        {path: 'user', name: 'user', component: () => import('../pages/system/user/index.vue')}
                     ]
                 }
             ]
@@ -53,15 +53,16 @@ router.beforeEach((to, from, next) => {
     if(to.name == 'login'){
         next()
     } else {
-        if ( !localStorage.getItem("isLogin")) {
-            next({
-                path: '/login'
-            })
-            return
-        } else {
-            document.title = to.meta.title || ''
-            next()
-        }
+        next()
+        // if ( !localStorage.getItem("isLogin")) {
+        //     next({
+        //         path: '/login'
+        //     })
+        //     return
+        // } else {
+        //     document.title = to.meta.title || ''
+        //     next()
+        // }
     }
   })
 export default router
