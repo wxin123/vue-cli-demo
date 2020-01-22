@@ -16,7 +16,7 @@
             </el-form>
             <el-form v-if="type==2" label-width="80px" ref="regForm" :rules="regFormRule" :model="regForm">
                 <el-form-item label="昵称" prop="nickname">
-                    <el-input type="text" v-model="regForm.username"></el-input>
+                    <el-input type="text" v-model="regForm.nickname"></el-input>
                 </el-form-item>
                 <el-form-item label="账号" prop="username">
                     <el-input type="text" v-model="regForm.username"></el-input>
@@ -41,7 +41,16 @@
 
 <script>
   import Account from '@/utils/account'
-  import {LOGIN } from '@/utils/apis.js'
+  import {LOGIN,USER } from '@/utils/apis.js'
+  const validateRePass = (rule, value, callback) => {
+    if (value === '') {
+      callback(new Error('请再次输入密码'));
+    } else if (value !== this.regForm.confirmPass) {
+      callback(new Error('两次输入密码不一致!'));
+    } else {
+      callback();
+    }
+  };
   export default {
     name: "login",
     data() {
@@ -77,7 +86,7 @@
             {required: true, message: '请输入密码', trigger: 'blur'}
           ],
           confirmPass: [
-            {required: true, message: '请确认密码', trigger: 'blur'}
+            {validator: validateRePass, trigger: 'blur'}
           ],
           mobile: [
             {required: true, message: '请输入手机号', trigger: 'blur'}
@@ -97,13 +106,21 @@
       login() {
         this.$refs['loginForm'].validate((valid) => {
           if (valid) {
-            this.$http.post(LOGIN.LOGIN, this.form).then((res) => {
-              window.console.log(res.data)
-              if(res.status == 200) {
-                Account.setAccountInfo(res.data.data)
+            const param = {
+              account: this.loginForm.username,
+              pwd: this.loginForm.password
+            }
+            this.$http.post(LOGIN.LOGIN, param).then((res) => {
+              if(res.code == 200) {
+                let data = {
+                  _token: res.data.token,
+                  username: res.data.user.account,
+                  session_id: res.data.user.id
+                }
+                Account.setAccountInfo(data)
                 this.$router.push('/')
               }else {
-                this.$message({message: res.data.message,type: 'error'})
+                this.$message({message: res.msg,type: 'error'})
               }
             })
           } else {
@@ -112,13 +129,21 @@
         });
       },
       register() {
+
         this.$refs['regForm'].validate((valid) => {
           if (valid) {
-            this.$http.post(LOGIN.REGISTER, this.form).then((res) => {
-              if(res.data.status == 200) {
+            let param = {
+              realName: this.regForm.nickname,
+              phoneNumber: this.regForm.mobile,
+              account: this.regForm.username,
+              pwd: this.regForm.password,
+              secondPwd: this.regForm.password
+            }
+            this.$http.post(USER.INSERT, param).then((res) => {
+              if(res.code == 200) {
                 this.type = 1
               } else {
-                this.$message({ message: res.data.message, type: 'error' })
+                this.$message({ message: res.msg, type: 'error' })
               }
               window.console.log(res)
             })

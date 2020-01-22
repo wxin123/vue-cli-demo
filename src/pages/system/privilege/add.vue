@@ -3,7 +3,6 @@
         <div class="box">
             <div style="margin: 15px">
                 <h3>创建/修改字典详情</h3>
-
             </div>
         </div>
     </div>

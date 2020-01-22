@@ -11,38 +11,36 @@
                 <el-button @click="add" size="small" type="primary">新增</el-button>
             </el-form-item>
         </el-form>
-        <el-table :data="list" :border="true" class="no-padding-table">
+        <el-table :data="list" :border="true">
             <el-table-column label="名称" width="150">
                 <template slot-scope="scope">
-                    <el-input size="mini" v-model="scope.row.name"></el-input>
+                    <el-input size="small" v-model="scope.row.name"></el-input>
                 </template>
             </el-table-column>
             <el-table-column label="价格" width="150">
                 <template slot-scope="scope">
-                    <el-input size="mini" v-model="scope.row.price"></el-input>
+                    <el-input size="small" v-model="scope.row.price"></el-input>
                 </template>
             </el-table-column>
             <el-table-column label="数量" width="150">
                 <template slot-scope="scope">
-                    <el-input size="mini" v-model="scope.row.num"></el-input>
+                    <el-input size="small" v-model="scope.row.num"></el-input>
                 </template>
             </el-table-column>
             <el-table-column label="已买" width="150">
                 <template slot-scope="scope">
-                    <el-input type="text" size="mini" v-model="scope.row.isBuy"></el-input>
+                    <el-input type="text" size="small" v-model="scope.row.isBuy"></el-input>
                 </template>
             </el-table-column>
             <el-table-column label="备注">
                 <template slot-scope="scope">
-                    <el-input type="text" size="mini" v-model="scope.row.mark"></el-input>
+                    <el-input type="text" size="small" v-model="scope.row.mark"></el-input>
                 </template>
             </el-table-column>
-            <el-table-column label="操作" width="116">
+            <el-table-column label="操作" width="150">
                 <template slot-scope="scope">
-                    <el-button-group>
-                        <el-button type="primary" size="mini" @click="save(scope.row)">保存</el-button>
-                        <el-button type="danger" size="mini" @click="del(scope.row)">删除</el-button>
-                    </el-button-group>
+                    <el-button type="primary" size="small" @click="save(scope.row)">保存</el-button>
+                    <el-button type="danger" size="small" @click="del(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>

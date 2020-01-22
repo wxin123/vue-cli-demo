@@ -28,6 +28,7 @@
 
 <script>
 import { mapState } from "vuex";
+import {LOGIN } from '@/utils/apis.js';
 import Account from '@/utils/account'
 export default {
   data() {
@@ -47,8 +48,12 @@ export default {
     },
     handleCommand(e){
       if(e === 'logout') {
-        Account.clearAccountInfo()
-        this.$router.push('/login')
+        this.$http.post(LOGIN.LOGOUT).then(res => {
+          if(res.code == 200) {
+            Account.clearAccountInfo()
+            this.$router.push('/login')
+          }
+        })
       }
     }
   }

@@ -53,16 +53,15 @@ router.beforeEach((to, from, next) => {
     if(to.name == 'login'){
         next()
     } else {
-        next()
-        // if ( !localStorage.getItem("isLogin")) {
-        //     next({
-        //         path: '/login'
-        //     })
-        //     return
-        // } else {
-        //     document.title = to.meta.title || ''
-        //     next()
-        // }
+        if ( !localStorage.getItem("isLogin")) {
+            next({
+                path: '/login'
+            })
+            return
+        } else {
+            document.title = to.meta.title || ''
+            next()
+        }
     }
   })
 export default router

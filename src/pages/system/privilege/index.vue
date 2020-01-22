@@ -17,20 +17,17 @@
                 </el-form-item>
             </el-form>
         </el-dialog>
-        <div>
-            <el-form :inline="true" :model="formInline" class="form">
-                <el-form-item label="关键字">
-                    <el-input v-model="formInline.keyword" size="small" placeholder="类别/编码"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-button type="primary" size="small" @click="getList">查询</el-button>
-                    <el-button type="primary" size="small" @click="handleAdd">新增</el-button>
-                </el-form-item>
-            </el-form>
-        </div>
+        <el-form :inline="true" :model="formInline" class="form">
+            <el-form-item label="关键字">
+                <el-input v-model="formInline.keyword" size="small" placeholder="类别/编码"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" size="small" @click="getList">查询</el-button>
+                <el-button type="primary" size="small" @click="handleAdd">新增</el-button>
+            </el-form-item>
+        </el-form>
         <div>
             <el-table :border="true" :data="tableData" style="width: 100%" >
-                <el-table-column prop="id" label="ID" width="100"></el-table-column>
                 <el-table-column prop="name" label="名称" width="150"></el-table-column>
                 <el-table-column prop="flag" label="标识符" width="200"></el-table-column>
                 <el-table-column prop="desc" label="描述"></el-table-column>
@@ -89,7 +86,6 @@
     methods: {
       getList() {
         // 查询字典列表
-        // this.$http.post('http://www.wxin.wang/nodes/privilege', this.formInline).then(res => {
         this.$http.post(PRIVILEGE.LIST, this.formInline).then(res => {
           this.tableData = res.data.data.data
           this.count = res.data.data.count
@@ -155,6 +151,9 @@
             padding: 0;
             height: 60px;
             line-height: 60px
+        }
+        .form{
+            margin: 10px;
         }
     }
 </style>

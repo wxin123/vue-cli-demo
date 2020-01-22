@@ -6,6 +6,7 @@
 </template>
 
 <script>
+  import bus from '@/utils/bus.js';
 export default {
   name: 'app',
   data(){
@@ -14,6 +15,9 @@ export default {
     }
   },
   created() {
+    bus.$on('logout', () => {
+      this.$router.push('/login')
+    })
     this.evn = process.env.NODE_ENV
   }
 }
@@ -35,10 +39,5 @@ export default {
   ::-webkit-scrollbar-thumb {
     background-color: rgba(144, 147, 153, 0.3);
     border-radius: 3px;
-  }
-  .no-padding-table.el-table{
-    td{padding: 0!important;}
-    .cell{padding: 0!important;}
-    .el-table--border td:first-child .cell{padding: 0!important;}
   }
 </style>
